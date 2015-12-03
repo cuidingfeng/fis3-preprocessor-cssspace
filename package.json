@@ -1,0 +1,26 @@
+{
+  "name": "fis3-preprocessor-cssspace",
+  "version": "1.0.0",
+  "description": "给模块的css添加模块名为前缀，相当于每个模块的css都在独立的命名空间里，简化模块内css命名的同时，解决css命名冲突的问题。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cuidingfeng/fis-preprocessor-cssspace.git"
+  },
+  "keywords": [
+    "fis",
+    "fis3",
+    "jello",
+    "yog2",
+    "css"
+  ],
+  "author": "cuidingfeng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cuidingfeng/fis-preprocessor-cssspace/issues"
+  },
+  "homepage": "https://github.com/cuidingfeng/fis-preprocessor-cssspace#readme"
+}
