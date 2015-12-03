@@ -40,7 +40,7 @@ module.exports = function (content, file, options) {
       prev = "MD-" + module_name + "-";
 
   if(file.isCssLike){
-    content = content.replace(/([.#,])/ig,"$1" + prev);
+    content = content.replace(/([.#])(?=[^{}]*\{)/ig,"$1" + prev);
   }else {
     content = content.replace(/(?:id|class)\s*=\s*(["']?)(.*?)\1/ig, function (n) {
       return n.replace(/@/g, prev);
