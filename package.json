@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cuidingfeng/fis-preprocessor-cssspace.git"
+    "url": "git+https://github.com/cuidingfeng/fis3-preprocessor-cssspace.git"
   },
   "keywords": [
     "fis",
@@ -20,7 +20,7 @@
   "author": "cuidingfeng",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cuidingfeng/fis-preprocessor-cssspace/issues"
+    "url": "https://github.com/cuidingfeng/fis3-preprocessor-cssspace/issues"
   },
-  "homepage": "https://github.com/cuidingfeng/fis-preprocessor-cssspace#readme"
+  "homepage": "https://github.com/cuidingfeng/fis3-preprocessor-cssspace#readme"
 }
