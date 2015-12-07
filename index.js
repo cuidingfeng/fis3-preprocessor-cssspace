@@ -15,6 +15,8 @@
 
 /**
  * css里所有的class和id名都会加上前缀
+ * 要匹配全局的样式，需要在给名称加前缀G_，如下匹配全局的.button。
+ * .G_button
  */
 
 /**
@@ -40,7 +42,8 @@ module.exports = function (content, file, options) {
       prev = "MD-" + module_name + "-";
 
   if(file.isCssLike){
-    content = content.replace(/([.#])(?=[^{}]*\{)/ig,"$1" + prev);
+    content = content.replace(/([.#])(?=[^{}]*\{)/ig,"$1" + prev).
+              replace(new RegExp('([.#])' + prev + 'G_', 'g'), '$1');
   }else {
     content = content.replace(/(?:id|class)\s*=\s*(["']?)(.*?)\1/ig, function (n) {
       return n.replace(/@/g, prev);
