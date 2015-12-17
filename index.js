@@ -49,6 +49,15 @@ module.exports = function (content, file, options) {
       return n.replace(/@/g, prev);
     });
     content = content.replace(/@MD-NAME/g, prev);
+
+    //基于vm模板时，给html中的widget标签添加index参数
+    if(file.isHtmlLike){
+      var i = 0;
+      content = content.replace(/\#widget\((.*?)\)/ig, function(str, $1){
+        i++;
+        return '#widget('+$1+' "var:MDINDEX='+i+'")';
+      });
+    }
   }
   return content;
 }

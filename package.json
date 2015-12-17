@@ -1,6 +1,6 @@
 {
   "name": "fis3-preprocessor-cssspace",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "给模块的css添加模块名为前缀，相当于每个模块的css都在独立的命名空间里，简化模块内css命名的同时，解决css命名冲突的问题。",
   "main": "index.js",
   "scripts": {
