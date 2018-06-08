@@ -35,29 +35,35 @@
 module.exports = function (content, file, options) {
   var arr_path = file.subpathNoExt.split("/"),
 
-      //模块名，作为命名空间
-      module_name = arr_path[arr_path.length-2],
+    //模块名，作为命名空间
+    module_name = arr_path.slice(2, -1).join("-"),
 
-      //前缀
-      prev = "MD-" + module_name + "-";
+    //前缀
+    prev = "MD-" + module_name + "-";
 
-  if(file.isCssLike){
-    content = content.replace(/([.#])(?=[^{}]*\{)/ig,"$1" + prev).
-              replace(new RegExp('([.#])' + prev + 'G_', 'g'), '$1');
-  }else {
-    content = content.replace(/(?:id|class)\s*=\s*(["']?)([^\1]*?)\1/ig, function (n) {
+  if (file.isCssLike) {
+    content = content.replace(/([.#])(?=[^{};]*\{)/ig, "$1" + prev).
+      replace(new RegExp('([.#])' + prev + 'G_', 'g'), '$1');
+  } else {
+
+    //基于smarty模板时，给html中的widget标签添加index参数
+    if (file.isHtmlLike || file.ext == '.tmpl') {
+      var i = 0;
+      content = content.replace(/\{widget (.*?)\}/ig, function (str, $1) {
+        i++;
+        return '{widget ' + $1 + ' MDINDEX="' + i + '"}';
+      });
+
+      //给头像加默认图片
+      //content = content.replace(/\<img /ig, '<img onerror="IMG_error.call(this)" ');
+
+    }
+
+    content = content.replace(/(?:id|class|for)\s*=\s*(["']?)([^\1]*?)\1/ig, function (n) {
       return n.replace(/@/g, prev);
     });
     content = content.replace(/@MD-NAME/g, prev);
 
-    //基于vm模板时，给html中的widget标签添加index参数
-    if(file.isHtmlLike){
-      var i = 0;
-      content = content.replace(/\#widget\((.*?)\)/ig, function(str, $1){
-        i++;
-        return '#widget('+$1+' "var:MDINDEX='+i+'")';
-      });
-    }
   }
   return content;
 }
