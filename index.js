@@ -45,7 +45,7 @@ module.exports = function (content, file, options) {
     content = content.replace(/([.#])(?=[^{}]*\{)/ig,"$1" + prev).
               replace(new RegExp('([.#])' + prev + 'G_', 'g'), '$1');
   }else {
-    content = content.replace(/(?:id|class)\s*=\s*(["']?)(.*?)\1/ig, function (n) {
+    content = content.replace(/(?:id|class)\s*=\s*(["']?)([^\1]*?)\1/ig, function (n) {
       return n.replace(/@/g, prev);
     });
     content = content.replace(/@MD-NAME/g, prev);
